@@ -75,53 +75,11 @@ const HomePage = ({pageData}: { pageData: PageData }) => {
                 pageData={pageData}>
             <div className="flex flex-col xl:flex-row gap-4 mb-4 items-center">
                 <div
-                    className="w-full bg-light-shades shadow-lg rounded-lg flex flex-col justify-center overflow-hidden">
-                    <LiteYouTubeEmbed
-                        id={liveVideoId}
-                        title="YouTube Live"
-                        webp={true}
-                        poster="hqdefault"
-                        params="autoplay=1&mute=1"
-                    />
-                </div>
-                <div
                     className="w-full p-2 bg-light-shades shadow-lg rounded-lg flex flex-col justify-center">
                     <div className="prose max-w-none"
                          dangerouslySetInnerHTML={{__html: homepage.sanitizedContent}}/>
                 </div>
             </div>
-            <div className="flex flex-wrap justify-center gap-4 mb-4">
-                {puppies.length > 0 ? (
-                    isLoading ? (
-                        Array.from({length: Math.min(puppies.length, 4)}, (_, i) => (
-                            <div
-                                key={i}
-                                className="bg-light-shades rounded-lg shadow-lg w-full sm:w-[calc(50%-8px)] xl:w-[calc(25%-12px)]">
-                                <div className="aspect-video"/>
-                                <div className="h-24"/>
-                            </div>
-                        ))
-                    ) : (
-                        randomPuppies.map((puppy) => (
-                            <DogCard
-                                dog={puppy}
-                                cardWidth='w-full sm:w-[calc(50%-8px)] xl:w-[calc(25%-12px)]'
-                                key={puppy._id}
-                            />
-                        ))
-                    )
-                ) : (
-                    <div
-                        className="h-72 w-full bg-light-shades rounded-lg flex items-center justify-center text-xl p-2">
-                        We're sorry, but we currently have no puppies available. We're constantly adding new
-                        puppies, so please check back soon!
-                    </div>
-                )}
-            </div>
-            <Link href="/puppies"
-                  className="flex items-center justify-center p-2 bg-light-shades rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1">
-                <h1 className="text-2xl font-medium">See all of the puppies</h1>
-            </Link>
         </Layout>
     );
 };

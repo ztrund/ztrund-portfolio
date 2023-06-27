@@ -9,10 +9,9 @@ import {handleCheckboxChange} from "../helpers/handleCheckboxChange";
 import Layout from "../components/layout/layout";
 import {FilterOrCloseIcon} from "../components/svgIcons";
 import DogCard from "../components/dogCard";
-import FinancingContainer from "../components/financing/financingContainer";
 
 const Parents = ({pageData}: { pageData: PageData }) => {
-    const {parents, metaDescription, financing} = pageData;
+    const {parents, metaDescription} = pageData;
     const uniqueColors = Array.from(new Set<string>(parents.map((parent: Parent) => parent.color)));
 
     const [isFiltersOpen, setIsFiltersOpen] = useState(false);
@@ -38,8 +37,6 @@ const Parents = ({pageData}: { pageData: PageData }) => {
                 metaDesc={metaDescription.description}
                 pageData={pageData}>
             <div className="flex flex-col gap-4">
-                {financing.displayOption == "container" &&
-                    <FinancingContainer financing={financing}/>}
                 <div className="flex flex-row gap-4">
                     <div
                         className={`hidden lg:flex justify-center flex-col w-48 h-min gap-2 divide-black divide-y bg-light-shades shadow-lg rounded-lg p-2 overflow-hidden`}>

@@ -4,21 +4,17 @@ import {FetchParams, PageData, Parent} from "../../types";
 import React from "react";
 import Layout from "../../components/layout/layout";
 import DogCard from "../../components/dogCard";
-import FinancingContainer from "../../components/financing/financingContainer";
-import FinancingBanner from "../../components/financing/financingBanner";
 import CustomCarousel from "../../components/carousel/customCarousel";
 import fetchPagePaths from "../../lib/fetchPagePaths";
 
 const Puppy = ({pageData}: { pageData: PageData }) => {
-    const {puppy, financing, metaDescription} = pageData;
+    const {puppy, metaDescription} = pageData;
 
     return (
         <Layout pageTitle={puppy.name}
                 metaDesc={metaDescription.description}
                 pageData={pageData}>
             <div className="flex flex-col gap-4">
-                {financing.displayOption == "container" &&
-                    <FinancingContainer financing={financing}/>}
                 <div className="flex justify-between items-center p-2 bg-light-shades shadow-lg rounded-lg">
                     <h1 className="text-3xl font-bold">{puppy.name}</h1>
                     <h1 className="text-2xl font-normal">{puppy.availability}{puppy.price && ` - $${puppy.price}`}</h1>
@@ -51,7 +47,6 @@ const Puppy = ({pageData}: { pageData: PageData }) => {
                                 </p>
                             )}
                         </div>
-                        {financing.displayOption == "banner" && <FinancingBanner financing={financing}/>}
                         {puppy.parents?.filter((parent: Parent) => parent).length > 0 && (
                             <>
                                 <div className="p-2 bg-light-shades drop-shadow-lg rounded-lg">

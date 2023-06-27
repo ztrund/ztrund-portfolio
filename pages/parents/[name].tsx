@@ -6,8 +6,6 @@ import useWindowSize from "../../helpers/useWindowSize";
 import {Pagination} from "../../components/pagination";
 import Layout from "../../components/layout/layout";
 import DogCard from "../../components/dogCard";
-import FinancingContainer from "../../components/financing/financingContainer";
-import FinancingBanner from "../../components/financing/financingBanner";
 import CustomCarousel from "../../components/carousel/customCarousel";
 import fetchPagePaths from "../../lib/fetchPagePaths";
 
@@ -56,8 +54,6 @@ const Parent = ({pageData}: { pageData: PageData }) => {
                 metaDesc={metaDescription.description}
                 pageData={pageData}>
             <div className="flex flex-col gap-4">
-                {financing.displayOption == "container" &&
-                    <FinancingContainer financing={financing}/>}
                 <div className="flex justify-between items-center p-2 bg-light-shades shadow-lg rounded-lg">
                     <h1 className="text-3xl font-bold">{parent.name}</h1>
                 </div>
@@ -90,7 +86,6 @@ const Parent = ({pageData}: { pageData: PageData }) => {
                                 </p>
                             )}
                         </div>
-                        {financing.displayOption == "banner" && <FinancingBanner financing={financing}/>}
                         {parent.puppies?.length > 0 && financing.displayOption != "banner" && (meetTheirPuppies)}
                     </div>
                 </div>
