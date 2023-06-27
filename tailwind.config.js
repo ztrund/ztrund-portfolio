@@ -12,6 +12,12 @@ module.exports = {
                 'main-brand-color': 'hsl(39, 76%, 52%)',
                 'dark-accent': 'hsl(27, 48%, 48%)',
                 'dark-shades': 'hsl(5, 11%, 22%)',
+                'text': '#ffffff',
+                'background': '#1a1a1a',
+                'primary-button': '#9dbf2b',
+                'secondary-button': '#ffffff',
+                'accent': '#4d2bbf',
+
             },
         },
     },

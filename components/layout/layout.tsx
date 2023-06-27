@@ -15,7 +15,7 @@ const Layout = ({children, pageTitle, metaDesc, pageData}: LayoutProps) => {
     const faviconUrls = pageData.companyInfo.faviconUrls;
 
     return (
-        <div id="root" className="flex flex-col min-h-screen bg-light-accent">
+        <div id="root" className="flex flex-col min-h-screen bg-background text-white">
             <Head>
                 <title>{pageTitle}</title>
                 <link rel="icon" href={faviconUrls.default}/>
@@ -36,11 +36,11 @@ const Layout = ({children, pageTitle, metaDesc, pageData}: LayoutProps) => {
                 <meta name="theme-color" content="hsl(39, 76%, 52%)"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
             </Head>
-            <header className="fixed w-full h-16 top-0 z-10 bg-dark-shades shadow-lg text-white">
+            <header className="fixed w-full h-16 top-0 z-10">
                 <Header pageData={pageData}/>
             </header>
             <main className="container mx-auto p-4 flex-grow flex-shrink-0 mt-16">{children}</main>
-            <footer className="bg-dark-shades text-white">
+            <footer>
                 <Footer pageData={pageData}/>
             </footer>
         </div>
