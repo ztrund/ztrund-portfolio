@@ -1,0 +1,2 @@
+# Required for checkYoutubeStatus pages function, found at https://console.cloud.google.com/apis/api/youtube.googleapis.com/
+YOUTUBE_API_KEY=
