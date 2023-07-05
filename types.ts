@@ -131,6 +131,27 @@ export interface Parent {
     picture: MediaItem;
 }
 
+export interface Project {
+    _id: string;
+    projectTitle: string;
+    description: string;
+    role: string;
+    languages: string[];
+    technologies: string[];
+    startDate: string;
+    endDate: string;
+    codeLink: string;
+    liveLink: string;
+    mediaItems: MediaItem[];
+    picture: MediaItem;
+    challenges: Challenge[];
+}
+
+export interface Challenge {
+    challengeDescription: string;
+    solutionDescription: string;
+}
+
 export interface Financing {
     banner: SanityImage;
     link: string;
