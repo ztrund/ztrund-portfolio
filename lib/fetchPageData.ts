@@ -10,6 +10,7 @@ import {replaceTemplateLiterals} from "../helpers/replaceTemplateLiterals";
 import {getAge} from "../helpers/getAge";
 import {sanitizeHTML} from "../helpers/sanitizeHTML";
 import sanityConfig from "./sanityConfig";
+import generateProjectCardUrls from "../helpers/generateProjectCardUrls";
 
 const deserializeToPageData = (rawData: PageData): PageData => {
     return {
@@ -23,6 +24,8 @@ const deserializeToPageData = (rawData: PageData): PageData => {
         puppy: rawData.puppy || {},
         financing: rawData.financing || {},
         metaDescription: rawData.metaDescription || {},
+        projects: rawData.projects || {},
+        project: rawData.project || {},
     };
 };
 
@@ -99,45 +102,6 @@ const fetchPageData = async (additionalQuery: string = '', fetchParams: FetchPar
                 })} ${dpr}x`).join(', ');
             })
         }
-        if (pageData.financing.displayOption === 'container') {
-            if (pageData.financing.logo) {
-                const imageUrlParams = {
-                    h: 48,
-                    auto: 'format',
-                    q: 75,
-                    fit: 'min'
-                };
-                const financingLogo = pageData.financing.logo;
-                financingLogo.imageUrl = sanityImgUrl(financingLogo, {...imageUrlParams, dpr: 1});
-                financingLogo.srcSet = [1, 1.5, 2].map(dpr => `${sanityImgUrl(financingLogo, {
-                    ...imageUrlParams,
-                    dpr
-                })} ${dpr}x`).join(', ');
-                const imgDimensions = imageDimensionExtractor(financingLogo.asset._ref);
-                financingLogo.width = imgDimensions.width / imgDimensions.height * 48;
-                financingLogo.height = 48
-            }
-            if (pageData.financing.text) {
-                pageData.financing.sanitizedText = sanitizeHTML(pageData.financing.text);
-            }
-        }
-        if (pageData.financing.displayOption === 'banner' && pageData.financing.banner) {
-            const imageUrlParams = {
-                auto: 'format',
-                q: 75,
-                fit: 'min'
-            };
-            const financingBanner = pageData.financing.banner;
-            financingBanner.imageUrl = sanityImgUrl(financingBanner, {...imageUrlParams, w: 488});
-            financingBanner.srcSet = [488, 616, 744, 976, 1232, 1488].map(w => `${sanityImgUrl(financingBanner, {
-                ...imageUrlParams,
-                w: w
-            })} ${w}w`).join(', ');
-            financingBanner.sizes = '(max-width: 1023px) calc(100vw - 32px), (max-width: 1536px) calc(50vw - 24px), 744px';
-            const imgDimensions = imageDimensionExtractor(financingBanner.asset._ref);
-            financingBanner.width = imgDimensions.width;
-            financingBanner.height = imgDimensions.height;
-        }
         if (pageData.about.mediaItems) {
             generateCarouselUrls(pageData.about.mediaItems);
         }
@@ -156,6 +120,13 @@ const fetchPageData = async (additionalQuery: string = '', fetchParams: FetchPar
             if (pageData.parent.puppies.length > 0) {
                 generateDogCardUrls(pageData.parent.puppies);
             }
+        }
+        if (pageData.project.mediaItems) {
+            generateCarouselUrls(pageData.project.mediaItems);
+            pageData.metaDescription.description = replaceTemplateLiterals(pageData.metaDescription.description, pageData.project);
+        }
+        if (pageData.projects.length > 0) {
+            generateProjectCardUrls(pageData.projects);
         }
         if (pageData.puppies.length > 0) {
             generateDogCardUrls(pageData.puppies);

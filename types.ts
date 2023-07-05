@@ -138,8 +138,6 @@ export interface Project {
     role: string;
     languages: string[];
     technologies: string[];
-    startDate: string;
-    endDate: string;
     codeLink: string;
     liveLink: string;
     mediaItems: MediaItem[];
@@ -176,6 +174,8 @@ export interface PageData {
     puppy: Puppy;
     parents: Parent[];
     parent: Parent;
+    projects: Project[];
+    project: Project;
 }
 
 export interface FetchParams {
