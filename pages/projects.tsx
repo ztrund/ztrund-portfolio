@@ -63,7 +63,7 @@ const Puppies = ({pageData}: { pageData: PageData }) => {
             <div className="flex flex-col gap-4">
                 <div className="flex flex-row gap-4">
                     <div
-                        className={`hidden lg:flex justify-center flex-col w-48 h-min gap-2 divide-black divide-y bg-light-shades shadow-lg rounded-lg p-2 overflow-hidden`}>
+                        className={`hidden lg:flex justify-center flex-col w-48 h-min gap-2 divide-black divide-y bg-background-lighter shadow-lg rounded-lg p-2 overflow-hidden`}>
                         <NameFilter searchTerm={searchTerm} setSearchTerm={setSearchTerm} id="Desktop"/>
                         <SortFilter sortFilter={sortFilter} setSortFilter={setSortFilter} id="Desktop"/>
                         <PriceFilter priceFilter={priceFilter} setPriceFilter={setPriceFilter}
@@ -79,8 +79,8 @@ const Puppies = ({pageData}: { pageData: PageData }) => {
                     </div>
                     <div className="flex flex-col w-full gap-4">
                         <div
-                            className="flex h-12 justify-between lg:justify-center items-center bg-light-shades shadow-lg rounded-lg overflow-hidden">
-                            <h1 className="text-3xl font-bold px-2">Puppies</h1>
+                            className="flex h-12 justify-between lg:justify-center items-center bg-background-lighter shadow-lg rounded-lg overflow-hidden">
+                            <h1 className="text-3xl font-bold px-2">Projects</h1>
                             <button
                                 onClick={() => setIsFiltersOpen(!isFiltersOpen)}
                                 className="lg:hidden flex flex-row justify-center items-center h-full px-4 border-l rounded-r-lg bg-main-brand-color text-light-shades focus:outline-none focus:ring-2 focus:ring-inset focus:ring-dark-accent stroke-white hover:stroke-dark-accent"
@@ -147,8 +147,8 @@ const Puppies = ({pageData}: { pageData: PageData }) => {
                                     ))
                                 ) : (
                                     <div
-                                        className="h-auto w-auto bg-light-shades rounded-lg text-xl p-2">
-                                        No puppies found :(
+                                        className="h-auto w-auto bg-background-lighter rounded-lg text-xl p-2">
+                                        No projects found :(
                                     </div>
                                 )
                             }

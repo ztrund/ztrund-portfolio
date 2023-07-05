@@ -35,20 +35,20 @@ const Header = ({pageData}: { pageData: PageData }) => {
     }, [isOpen]);
 
     return (
-        <div className="container mx-auto h-full">
-            <div className="flex h-full justify-center items-center">
+        <div className="container mx-auto p-4">
+            <div className="flex justify-center items-center">
                 <div className="w-full">
                     <div className="flex justify-between">
                         <Link href="/"
-                              className="text-xl font-bold px-4 h-16 flex items-center hover:text-dark-accent">
+                              className="text-xl font-bold p-2 flex items-center hover:text-dark-accent bg-background-lighter rounded-lg shadow-lg">
                             {companyLogoElement}
                         </Link>
-                        <div className="hidden lg:flex">
+                        <div className="hidden lg:flex bg-background-lighter rounded-lg shadow-lg">
                             <NavLinks isVertical={false}/>
                         </div>
                         <button
                             onClick={() => setIsOpen(true)}
-                            className="lg:hidden focus:outline-none px-4 h-16 flex items-center stroke-white hover:stroke-dark-accent"
+                            className="lg:hidden focus:outline-none p-2 flex items-center stroke-black hover:bg-primary-button-darken bg-primary-button rounded-lg shadow-lg"
                             aria-label="Menu Toggle">
                             <MenuIcon/>
                         </button>

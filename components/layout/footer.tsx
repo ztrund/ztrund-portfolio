@@ -30,9 +30,9 @@ const Footer = ({pageData}: { pageData: PageData }) => {
 
     return (
         <div className="container mx-auto p-4">
-            <div className="flex flex-col md:flex-row mb-4">
+            <div className="flex flex-col md:flex-row gap-4 mb-4">
                 {contactInfo.socialMediaLinks && (
-                    <div className="w-full mb-4 text-center">
+                    <div className="w-full text-center bg-background-lighter rounded-lg shadow-lg p-2">
                         <div className="text-lg font-bold mb-2">Social Media</div>
                         <ul className="flex flex-col gap-2">
                             {contactInfo.socialMediaLinks.map((link) => {
@@ -56,7 +56,7 @@ const Footer = ({pageData}: { pageData: PageData }) => {
                         </ul>
                     </div>
                 )}
-                <div className="w-full mb-4 text-center">
+                <div className="w-full text-center bg-background-lighter rounded-lg shadow-lg p-2">
                     <div className="text-lg font-bold mb-2">Pages</div>
                     <ul className="flex flex-col gap-2">
                         {pages.map((page) => (
@@ -66,20 +66,8 @@ const Footer = ({pageData}: { pageData: PageData }) => {
                         ))}
                     </ul>
                 </div>
-                {contactInfo.businessHours && (
-                    <div className="w-full mb-4 text-center">
-                        <div className="text-lg font-bold mb-2">Business Hours</div>
-                        <ul className="flex flex-col gap-2">
-                            {contactInfo.businessHours.map((hours) => (
-                                <li key={hours.day}>
-                                    <strong>{hours.day}:</strong> {hours.hours}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
             </div>
-            <div className="flex flex-col gap-3 text-sm text-center">
+            <div className="flex flex-col gap-3 text-sm text-center bg-background-lighter rounded-lg shadow-lg p-2">
                 <p>&copy; {new Date().getFullYear()} {companyInfo.companyName}</p>
                 {contactInfo.email &&
                     <a className="hover:text-dark-accent" href={`mailto:${contactInfo.email}`} target="_blank" rel="noopener noreferrer">
