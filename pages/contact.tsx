@@ -8,12 +8,12 @@ const ContactPage = ({pageData}: { pageData: PageData }) => {
     const {contactInfo, metaDescription} = pageData;
 
     return (
-        <Layout pageTitle="Contact Us"
+        <Layout pageTitle="Contact Me"
                 metaDesc={metaDescription.description}
                 pageData={pageData}>
             <div className="flex flex-col gap-10 mx-auto p-4 bg-background-lighter drop-shadow-lg rounded-lg max-w-3xl">
                 <div className="flex flex-col gap-4 text-center">
-                    <h1 className="text-3xl font-bold">Contact Me</h1>
+                    <h1 className="text-3xl font-semibold">Contact Me</h1>
                     {(contactInfo.email || contactInfo.phone || contactInfo.location) && (
                         <div>
                             {contactInfo.email &&
@@ -48,7 +48,7 @@ const ContactPage = ({pageData}: { pageData: PageData }) => {
                 </div>
                 {contactInfo.socialMediaLinks && (
                     <div className="text-center">
-                        <h2 className="text-2xl font-bold mb-4">Follow us on social media:</h2>
+                        <h2 className="text-2xl font-semibold mb-4">Follow me on social media:</h2>
                         <div className="flex flex-wrap justify-center">
                             {contactInfo.socialMediaLinks.map((link: SocialMediaLink) => {
                                 return (
@@ -67,16 +67,6 @@ const ContactPage = ({pageData}: { pageData: PageData }) => {
                                 );
                             })}
                         </div>
-                    </div>
-                )}
-                {contactInfo.businessHours && (
-                    <div className="text-center">
-                        <h2 className="text-2xl font-bold mb-4">Business Hours:</h2>
-                        {contactInfo.businessHours.map((hours: BusinessHour) => (
-                            <p key={hours.day}>
-                                <strong>{hours.day}:</strong> {hours.hours}
-                            </p>
-                        ))}
                     </div>
                 )}
             </div>

@@ -23,7 +23,7 @@ const Header = ({pageData}: { pageData: PageData }) => {
                 <div className="w-full">
                     <div className="flex justify-between items-center">
                         <Link href="/"
-                              className="text-3xl font-semibold p-2 flex items-center hover:text-primary-button-lighten">
+                              className="text-4xl font-bold p-2 flex items-center hover:text-primary-button-lighten">
                             {companyName}
                         </Link>
                         <div className="hidden lg:flex">

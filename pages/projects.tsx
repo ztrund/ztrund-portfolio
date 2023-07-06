@@ -36,8 +36,8 @@ const Puppies = ({pageData}: { pageData: PageData }) => {
                     </div>
                     <div className="flex flex-col w-full gap-4">
                         <div
-                            className="flex h-12 justify-between lg:justify-center items-center bg-background-lighter shadow-lg rounded-lg overflow-hidden">
-                            <h1 className="text-3xl px-2">Projects</h1>
+                            className="flex justify-between lg:justify-center items-center bg-background-lighter shadow-lg rounded-lg overflow-hidden">
+                            <h1 className="text-3xl font-semibold p-2">Projects</h1>
                             <button
                                 onClick={() => setIsFiltersOpen(!isFiltersOpen)}
                                 className="lg:hidden items-center h-full px-4 rounded-r-lg bg-primary-button stroke-black hover:bg-primary-button-darken"

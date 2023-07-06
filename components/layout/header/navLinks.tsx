@@ -17,7 +17,7 @@ export const NavLinks = ({isVertical}: { isVertical: boolean }) => (
             Home
         </Link>
         <Link href="/about" className={getLinkClassName("/about", isVertical)}>
-            About Us
+            About Me
         </Link>
         <Link href="/projects" className={getLinkClassName("/projects", isVertical)}>
             Projects

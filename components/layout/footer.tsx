@@ -11,7 +11,7 @@ const Footer = ({pageData}: { pageData: PageData }) => {
             url: '/',
         },
         {
-            name: 'About Us',
+            name: 'About Me',
             url: '/about',
         },
         {
