@@ -1,22 +1,21 @@
-import React, {useMemo, useState} from 'react';
+import React, {ChangeEvent, useMemo, useState} from 'react';
 import {GetStaticProps} from 'next';
 import {PageData, Project} from "../types";
 import fetchPageData from "../lib/fetchPageData";
-import NameFilter from "../components/filters/nameFilter";
 import Layout from "../components/layout/layout";
-import {FilterOrCloseIcon} from "../components/svgIcons";
 import ProjectCard from "../components/projectCard";
 
 const Puppies = ({pageData}: { pageData: PageData }) => {
-    const [isFiltersOpen, setIsFiltersOpen] = useState(false);
     const {metaDescription, projects} = pageData;
 
     const [searchTerm, setSearchTerm] = useState('');
 
-    const sortedAndFilteredProjects = useMemo(() => {
+    const sortedAndFilteredProjects = useMemo(() => { //Doesn't work how I want it to need to fix it, cant search multiple words correctly, and I want dropdown with tags sort of thing.
         return [...projects]
             .filter((project: Project) => {
-                const matchesSearchTerm = project.projectTitle.toLowerCase().includes(searchTerm.toLowerCase());
+                const matchesSearchTerm = project.projectTitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    project.languages.some(language => language.toLowerCase().includes(searchTerm.toLowerCase())) ||
+                    project.role.toLowerCase().includes(searchTerm.toLowerCase());
 
                 return (
                     matchesSearchTerm
@@ -30,32 +29,17 @@ const Puppies = ({pageData}: { pageData: PageData }) => {
                 pageData={pageData}>
             <div className="flex flex-col gap-4">
                 <div className="flex flex-row gap-4">
-                    <div
-                        className={`hidden lg:flex justify-center flex-col w-48 h-min gap-2 divide-black divide-y bg-background-lighter shadow-lg rounded-lg p-2 overflow-hidden`}>
-                        <NameFilter searchTerm={searchTerm} setSearchTerm={setSearchTerm} id="Desktop"/>
-                    </div>
                     <div className="flex flex-col w-full gap-4">
                         <div
-                            className="flex justify-between lg:justify-center items-center bg-background-lighter shadow-lg rounded-lg overflow-hidden">
-                            <h1 className="text-3xl font-semibold p-2">Projects</h1>
-                            <button
-                                onClick={() => setIsFiltersOpen(!isFiltersOpen)}
-                                className="lg:hidden items-center h-full px-4 rounded-r-lg bg-primary-button stroke-black hover:bg-primary-button-darken"
-                                aria-label={isFiltersOpen ? "Close filters" : "Open filters"}
-                            >
-                                <FilterOrCloseIcon isOpen={isFiltersOpen}/>
-                            </button>
-                        </div>
-                        <div
-                            className={`${isFiltersOpen ? "flex" : "hidden"} lg:hidden justify-center flex-col w-full h-min bg-background-lighter shadow-lg rounded-lg p-2 overflow-clip`}>
-                            <div className="flex flex-col md:flex-row">
-                                <div className="flex flex-col md:w-1/2">
-                                    <div className="pr-2 pb-2">
-                                        <NameFilter searchTerm={searchTerm} setSearchTerm={setSearchTerm}
-                                                    id="Mobile"/>
-                                    </div>
-                                </div>
-                            </div>
+                            className="flex justify-between items-center bg-background-lighter shadow-lg rounded-lg overflow-hidden p-2">
+                            <h1 className="text-3xl font-semibold">Projects</h1>
+                            <input
+                                type="text"
+                                className="rounded-lg py-0 px-2 placeholder-gray-400 bg-background-lightest border-black focus:ring-primary-button focus:border-primary-button"
+                                placeholder="Search"
+                                onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
+                                value={searchTerm}
+                            />
                         </div>
                         <div className="flex flex-wrap justify-center gap-4">
                             {
