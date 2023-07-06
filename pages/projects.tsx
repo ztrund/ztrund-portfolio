@@ -25,7 +25,7 @@ const Puppies = ({pageData}: { pageData: PageData }) => {
     }, [projects, searchTerm]);
 
     return (
-        <Layout pageTitle="Puppies"
+        <Layout pageTitle="Projects"
                 metaDesc={metaDescription.description}
                 pageData={pageData}>
             <div className="flex flex-col gap-4">
@@ -37,17 +37,17 @@ const Puppies = ({pageData}: { pageData: PageData }) => {
                     <div className="flex flex-col w-full gap-4">
                         <div
                             className="flex h-12 justify-between lg:justify-center items-center bg-background-lighter shadow-lg rounded-lg overflow-hidden">
-                            <h1 className="text-3xl font-bold px-2">Projects</h1>
+                            <h1 className="text-3xl px-2">Projects</h1>
                             <button
                                 onClick={() => setIsFiltersOpen(!isFiltersOpen)}
-                                className="lg:hidden flex flex-row justify-center items-center h-full px-4 border-l rounded-r-lg bg-main-brand-color text-light-shades focus:outline-none focus:ring-2 focus:ring-inset focus:ring-dark-accent stroke-white hover:stroke-dark-accent"
+                                className="lg:hidden items-center h-full px-4 rounded-r-lg bg-primary-button stroke-black hover:bg-primary-button-darken"
                                 aria-label={isFiltersOpen ? "Close filters" : "Open filters"}
                             >
                                 <FilterOrCloseIcon isOpen={isFiltersOpen}/>
                             </button>
                         </div>
                         <div
-                            className={`${isFiltersOpen ? "flex" : "hidden"} lg:hidden justify-center flex-col w-full h-min bg-light-shades shadow-lg rounded-lg p-2 overflow-clip`}>
+                            className={`${isFiltersOpen ? "flex" : "hidden"} lg:hidden justify-center flex-col w-full h-min bg-background-lighter shadow-lg rounded-lg p-2 overflow-clip`}>
                             <div className="flex flex-col md:flex-row">
                                 <div className="flex flex-col md:w-1/2">
                                     <div className="pr-2 pb-2">

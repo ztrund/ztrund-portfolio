@@ -8,23 +8,6 @@ const Header = ({pageData}: { pageData: PageData }) => {
     const [isOpen, setIsOpen] = useState(false);
     const {companyInfo} = pageData;
     const {companyName, companyLogo} = companyInfo;
-    let companyLogoElement = <span>{companyName}</span>;
-
-    if (companyLogo) {
-        companyLogoElement = (
-            <>
-                <link rel="preload" as="image" href={companyLogo.imageUrl} imageSrcSet={companyLogo.srcSet}/>
-                <img
-                    src={companyLogo.imageUrl}
-                    srcSet={companyLogo.srcSet}
-                    alt={`${companyName} Logo`}
-                    loading="eager"
-                    width={companyLogo.width}
-                    height={companyLogo.height}
-                />
-            </>
-        );
-    }
 
     useEffect(() => {
         if (isOpen) {
@@ -38,12 +21,12 @@ const Header = ({pageData}: { pageData: PageData }) => {
         <div className="container mx-auto p-4">
             <div className="flex justify-center items-center">
                 <div className="w-full">
-                    <div className="flex justify-between">
+                    <div className="flex justify-between items-center">
                         <Link href="/"
-                              className="text-xl font-bold p-2 flex items-center hover:text-dark-accent bg-background-lighter rounded-lg shadow-lg">
-                            {companyLogoElement}
+                              className="text-3xl font-semibold p-2 flex items-center hover:text-primary-button-lighten">
+                            {companyName}
                         </Link>
-                        <div className="hidden lg:flex bg-background-lighter rounded-lg shadow-lg">
+                        <div className="hidden lg:flex">
                             <NavLinks isVertical={false}/>
                         </div>
                         <button
@@ -59,19 +42,17 @@ const Header = ({pageData}: { pageData: PageData }) => {
                             isOpen ? "translate-x-0" : "translate-x-full"
                         } lg:hidden`} aria-label="Close Menu"/>
                     <div
-                        className={`fixed top-0 right-0 w-48 h-full bg-dark-shades z-[100] transform ${
+                        className={`fixed top-0 right-0 w-48 h-full bg-background-lightest z-[100] transform ${
                             isOpen ? "translate-x-0 shadow-lg" : "translate-x-full"
                         } transition-transform duration-300 ease-in-out lg:hidden`}
                     >
-                        <div className="flex-col">
-                            <div className="flex flex-col h-16 items-end justify-center">
-                                <button
-                                    onClick={() => setIsOpen(false)}
-                                    className="text-white focus:outline-none px-4 w-full h-16 flex items-center justify-end stroke-white hover:stroke-dark-accent"
-                                    aria-label="Close Menu">
-                                    <CloseIcon/>
-                                </button>
-                            </div>
+                        <div className="flex flex-col gap-2 p-2">
+                            <button
+                                onClick={() => setIsOpen(false)}
+                                className="focus:outline-none p-2 flex bg-primary-button rounded-lg shadow-lg justify-end stroke-black hover:bg-primary-button-darken"
+                                aria-label="Close Menu">
+                                <CloseIcon/>
+                            </button>
                             <NavLinks isVertical={true}/>
                         </div>
                     </div>

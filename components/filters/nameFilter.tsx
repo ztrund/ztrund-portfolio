@@ -14,7 +14,7 @@ const NameFilter: React.FC<NameFilterProps> = ({searchTerm, setSearchTerm, id}) 
             <input
                 id={inputId}
                 type="text"
-                className="rounded-lg w-full py-0 px-2 border-black focus:ring-dark-accent focus:border-dark-accent"
+                className="rounded-lg w-full py-0 px-2 placeholder-gray-400 bg-background-lightest border-black focus:ring-primary-button focus:border-primary-button"
                 placeholder="Search by name"
                 onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
                 value={searchTerm}

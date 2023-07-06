@@ -20,7 +20,7 @@ const ProjectCard: FunctionComponent<ProjectCardProps> = ({
     const projectImage = project.picture.image;
 
     return (<Link href={url}
-                  className={`primary-container bg-secondary-button text-black rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 ${cardWidth}`}>
+                  className={`primary-container bg-background-lighter rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 ${cardWidth}`}>
         <div className="aspect-video overflow-hidden flex items-center justify-center">
             {!lazy && <link
                 rel="preload"

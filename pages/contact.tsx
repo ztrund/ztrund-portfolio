@@ -11,15 +11,15 @@ const ContactPage = ({pageData}: { pageData: PageData }) => {
         <Layout pageTitle="Contact Us"
                 metaDesc={metaDescription.description}
                 pageData={pageData}>
-            <div className="flex flex-col gap-10 mx-auto p-4 bg-light-shades drop-shadow-lg rounded-lg max-w-3xl">
+            <div className="flex flex-col gap-10 mx-auto p-4 bg-background-lighter drop-shadow-lg rounded-lg max-w-3xl">
                 <div className="flex flex-col gap-4 text-center">
-                    <h1 className="text-3xl font-bold">Contact Us</h1>
+                    <h1 className="text-3xl font-bold">Contact Me</h1>
                     {(contactInfo.email || contactInfo.phone || contactInfo.location) && (
                         <div>
                             {contactInfo.email &&
                                 <div className="flex flex-row items-center justify-center">
                                     <strong>Email:</strong>
-                                    <a className="hover:text-dark-accent p-2" href={`mailto:${contactInfo.email}`}
+                                    <a className="hover:text-primary-button-lighten p-2" href={`mailto:${contactInfo.email}`}
                                        target="_blank" rel="noopener noreferrer">
                                         {contactInfo.email}
                                     </a>
@@ -28,7 +28,7 @@ const ContactPage = ({pageData}: { pageData: PageData }) => {
                             {contactInfo.phone &&
                                 <div className="flex flex-row items-center justify-center">
                                     <strong>Phone:</strong>
-                                    <a className="hover:text-dark-accent p-2" href={`tel:${contactInfo.phone}`}>
+                                    <a className="hover:text-primary-button-lighten p-2" href={`tel:${contactInfo.phone}`}>
                                         {contactInfo.phone}
                                     </a>
                                 </div>
@@ -36,7 +36,7 @@ const ContactPage = ({pageData}: { pageData: PageData }) => {
                             {contactInfo.location &&
                                 <div className="flex flex-row items-center justify-center">
                                     <strong>Location:</strong>
-                                    <a className="hover:text-dark-accent p-2"
+                                    <a className="hover:text-primary-button-lighten p-2"
                                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.location)}`}
                                        target="_blank" rel="noopener noreferrer">
                                         {contactInfo.location}
@@ -57,7 +57,7 @@ const ContactPage = ({pageData}: { pageData: PageData }) => {
                                         href={link.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex flex-row p-2 hover:fill-dark-accent hover:text-dark-accent items-center gap-2"
+                                        className="flex flex-row p-2 fill-white hover:fill-primary-button-lighten hover:text-primary-button-lighten items-center gap-2"
                                     >
                                         {link.icon && (
                                             <CustomSVGIcon viewBox={link.icon.viewBox} path={link.icon.path}/>

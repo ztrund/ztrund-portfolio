@@ -15,15 +15,11 @@ const Footer = ({pageData}: { pageData: PageData }) => {
             url: '/about',
         },
         {
-            name: 'Puppies',
-            url: '/puppies',
+            name: 'Projects',
+            url: '/projects',
         },
         {
-            name: 'Parents',
-            url: '/parents',
-        },
-        {
-            name: 'Contact Us',
+            name: 'Contact Me',
             url: '/contact',
         },
     ];
@@ -43,7 +39,7 @@ const Footer = ({pageData}: { pageData: PageData }) => {
                                             href={link.url}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="fill-white hover:fill-dark-accent hover:text-dark-accent flex justify-center items-center gap-2"
+                                            className="fill-white hover:fill-primary-button-lighten hover:text-primary-button-lighten flex justify-center items-center gap-2"
                                         >
                                             {link.icon && (
                                                 <CustomSVGIcon viewBox={link.icon.viewBox} path={link.icon.path}/>
@@ -61,7 +57,7 @@ const Footer = ({pageData}: { pageData: PageData }) => {
                     <ul className="flex flex-col gap-2">
                         {pages.map((page) => (
                             <li key={page.name}>
-                                <Link href={page.url} className="flex justify-center items-center hover:text-dark-accent">{page.name}</Link>
+                                <Link href={page.url} className="flex justify-center items-center hover:text-primary-button-lighten">{page.name}</Link>
                             </li>
                         ))}
                     </ul>
@@ -70,17 +66,17 @@ const Footer = ({pageData}: { pageData: PageData }) => {
             <div className="flex flex-col gap-3 text-sm text-center bg-background-lighter rounded-lg shadow-lg p-2">
                 <p>&copy; {new Date().getFullYear()} {companyInfo.companyName}</p>
                 {contactInfo.email &&
-                    <a className="hover:text-dark-accent" href={`mailto:${contactInfo.email}`} target="_blank" rel="noopener noreferrer">
+                    <a className="hover:text-primary-button-lighten" href={`mailto:${contactInfo.email}`} target="_blank" rel="noopener noreferrer">
                         {contactInfo.email}
                     </a>
                 }
                 {contactInfo.phone &&
-                    <a className="hover:text-dark-accent" href={`tel:${contactInfo.phone}`}>
+                    <a className="hover:text-primary-button-lighten" href={`tel:${contactInfo.phone}`}>
                         {contactInfo.phone}
                     </a>
                 }
                 {contactInfo.location &&
-                    <a className="hover:text-dark-accent" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.location)}`} target="_blank" rel="noopener noreferrer">
+                    <a className="hover:text-primary-button-lighten" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactInfo.location)}`} target="_blank" rel="noopener noreferrer">
                         {contactInfo.location}
                     </a>
                 }
