@@ -22,7 +22,7 @@ const HomePage = ({pageData}: { pageData: PageData }) => {
                     <div className="text-center text-3xl font-semibold">Skills Overview</div>
                     <div className="flex flex-col sm:flex-row lg:flex-col gap-4">
                         <div className="w-full flex flex-col gap-2">
-                            <div className="text-2xl font-semibold">Programming Languages</div>
+                            <div className="text-2xl font-semibold">Languages</div>
                             <div className="text-lg font-light">
                                 {homepage.languages.map((language, index) => (
                                     <div key={index}>- {language}</div>
@@ -30,7 +30,7 @@ const HomePage = ({pageData}: { pageData: PageData }) => {
                             </div>
                         </div>
                         <div className="w-full flex flex-col gap-2">
-                            <div className="text-2xl font-semibold">Technologies and Tools</div>
+                            <div className="text-2xl font-semibold">Technologies</div>
                             <div className="text-lg font-light">
                                 {homepage.technologies.map((technology, index) => (
                                     <div key={index}>- {technology}</div>

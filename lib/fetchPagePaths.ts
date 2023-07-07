@@ -8,7 +8,7 @@ const fetchPagePaths = async (query: string) => {
             headers: {'Content-Type': 'application/json'}
         });
         return response.data.result.map((page: { name: string }) => ({
-            params: {name: page.name.toLowerCase()},
+            params: {name: page.name.toLowerCase().split(" ").join("-")},
         }));
     } catch (error) {
         console.error('Error fetching page paths:', error);

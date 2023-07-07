@@ -15,7 +15,7 @@ const ProjectCard: FunctionComponent<ProjectCardProps> = ({
                                                               imageSizes = '(max-width: 639px) calc(100vw-32px), (max-width: 767px) 296px, (max-width: 1023px) 360px, (max-width: 1279px) 488px, (max-width: 1535px) 300px, 364px',
                                                               lazy = true,
                                                           }) => {
-    const url = `/projects/${project.projectTitle.toLowerCase()}`;
+    const url = `/projects/${project.projectTitle.toLowerCase().split(" ").join("-")}`;
 
     const projectImage = project.picture.image;
 

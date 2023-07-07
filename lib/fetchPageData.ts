@@ -48,7 +48,6 @@ const fetchPageData = async (additionalQuery: string = '', fetchParams: FetchPar
         },
         "companyInfo": *[_type == "companyInfo"][0] {
         companyName,
-        companyLogo,
         favicon,
         },
         ${additionalQuery}
@@ -104,7 +103,7 @@ const fetchPageData = async (additionalQuery: string = '', fetchParams: FetchPar
         }
         if (pageData.project.mediaItems) {
             generateCarouselUrls(pageData.project.mediaItems);
-            pageData.metaDescription.description = replaceTemplateLiterals(pageData.metaDescription.description, pageData.project);
+            // pageData.metaDescription.description = replaceTemplateLiterals(pageData.metaDescription.description, pageData.project);
         }
         if (pageData.projects.length > 0) {
             generateProjectCardUrls(pageData.projects);
