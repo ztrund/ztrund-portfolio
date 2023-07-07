@@ -72,6 +72,7 @@ export const getStaticProps: GetStaticProps = async () => {
     const additionalQuery = `
     "projects": *[_type == "projects"] | order(projectTitle) {
       _id,
+      slug,
       projectTitle,
       role,
       languages,

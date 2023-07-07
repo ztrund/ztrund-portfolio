@@ -11,13 +11,15 @@ const generateCarouselUrls = (mediaItems: MediaItem[]) => {
     mediaItems.map((mediaItem) => {
         if (mediaItem.type === 'image') {
             mediaItem.image.imageUrl = sanityImgUrl(mediaItem.image, {...imageUrlParams});
+            const widths = [488, 616, 744, 976, 1232, 1488]
+            const heights = widths.map(w => Math.round(w / (16 / 9)))
             mediaItem.imageSlide = {
-                imageUrl: sanityImgUrl(mediaItem.image, {...imageUrlParams, w: 488, h: 488}),
-                srcSet: [488, 616, 744, 976, 1232, 1488].map(dimension => `${sanityImgUrl(mediaItem.image, {
+                imageUrl: sanityImgUrl(mediaItem.image, {...imageUrlParams, w: widths[0], h: heights[0]}),
+                srcSet: widths.map((w, i) => `${sanityImgUrl(mediaItem.image, {
                     ...imageUrlParams,
-                    w: dimension,
-                    h: dimension
-                })} ${dimension}w`).join(', '),
+                    w: w,
+                    h: heights[i]
+                })} ${w}w`).join(', '),
                 sizes: '(max-width: 1023px) calc(100vw - 32px), (max-width: 1536px) calc(50vw - 24px), 744px'
             };
             mediaItem.thumbnailImage = {

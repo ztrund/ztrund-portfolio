@@ -132,6 +132,7 @@ export interface Parent {
 
 export interface Project {
     _id: string;
+    slug: Slug;
     projectTitle: string;
     description: string;
     role: string;
@@ -142,6 +143,10 @@ export interface Project {
     mediaItems: MediaItem[];
     picture: MediaItem;
     challenges: Challenge[];
+}
+
+export interface Slug {
+    current: string;
 }
 
 export interface Challenge {

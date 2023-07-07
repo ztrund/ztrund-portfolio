@@ -22,7 +22,7 @@ const ImageSlide: React.FC<ImageSlideProps> = ({imageSlide, index, onClick}) => 
             sizes={imageSlide.sizes}
             alt={`Slide ${index}`}
             loading={index === 0 ? "eager" : "lazy"}
-            className="w-full aspect-square object-cover"
+            className="w-full aspect-video object-cover"
             onClick={onClick}
         />
     </>);

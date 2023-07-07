@@ -30,7 +30,7 @@ const About = ({pageData}: { pageData: PageData }) => {
                          dangerouslySetInnerHTML={{__html: about.sanitizedBio}}/>
                 </div>
                 <div className="w-full bg-background-lighter shadow-lg rounded-lg p-2">
-                    <h2 className="text-3xl font-semibold text-center mb-2">Skills</h2>
+                    <h2 className="text-3xl font-semibold text-center mb-2">Soft Skills</h2>
                     {about.skills.map((skill, index) => {
                         const [skillName, skillDesc] = skill.split(':');
                         return (
