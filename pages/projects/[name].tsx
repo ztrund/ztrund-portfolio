@@ -58,7 +58,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({params}) => {
     const additionalQuery = `
-    "project": *[_type == "projects" && projectTitle match $name][0]{
+    "project": *[_type == "projects" && slug.current == $name][0]{
       projectTitle,
       description,
       role,
