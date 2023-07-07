@@ -102,18 +102,18 @@ export interface Homepage {
 }
 
 export interface About {
-    content: PortableTextBlock[];
-    sanitizedContent: string;
-    mediaItems: MediaItem[];
-    team: TeamMember[];
-    teamDescription: PortableTextBlock[];
-    sanitizedTeamDescription: string;
+    bio: PortableTextBlock[];
+    sanitizedBio: string;
+    image: MediaItem;
+    education: Education[];
+    skills: string[];
 }
 
-export interface TeamMember {
-    name: string;
-    position: string;
-    image: SanityImage;
+export interface Education {
+    degree: string;
+    university: string;
+    startDate: string;
+    endDate: string;
 }
 
 export interface Parent {

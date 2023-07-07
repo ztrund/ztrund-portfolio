@@ -1,4 +1,4 @@
-import {FetchParams, PageData, SocialMediaLink, TeamMember} from '../types';
+import {FetchParams, PageData, SocialMediaLink} from '../types';
 import axios from "axios";
 import generateFaviconUrls from "../helpers/generateFaviconUrls";
 import {sanityImgUrl} from "./sanityImgUrl";
@@ -86,25 +86,6 @@ const fetchPageData = async (additionalQuery: string = '', fetchParams: FetchPar
             companyLogo.width = imgDimensions.width / imgDimensions.height * 64;
             companyLogo.height = 64
         }
-        if (pageData.about.team) {
-            const imageUrlParams = {
-                h: 128,
-                w: 128,
-                auto: 'format',
-                q: 75,
-                fit: 'min'
-            };
-            pageData.about.team.map((teamMember: TeamMember) => {
-                teamMember.image.imageUrl = sanityImgUrl(teamMember.image, {...imageUrlParams, dpr: 1});
-                teamMember.image.srcSet = [1, 1.5, 2].map(dpr => `${sanityImgUrl(teamMember.image, {
-                    ...imageUrlParams,
-                    dpr
-                })} ${dpr}x`).join(', ');
-            })
-        }
-        if (pageData.about.mediaItems) {
-            generateCarouselUrls(pageData.about.mediaItems);
-        }
         if (pageData.puppy.mediaItems) {
             generateCarouselUrls(pageData.puppy.mediaItems);
             pageData.metaDescription.description = replaceTemplateLiterals(pageData.metaDescription.description, pageData.puppy);
@@ -137,11 +118,8 @@ const fetchPageData = async (additionalQuery: string = '', fetchParams: FetchPar
         if (pageData.homepage.content) {
             pageData.homepage.sanitizedContent = sanitizeHTML(pageData.homepage.content);
         }
-        if (pageData.about.content) {
-            pageData.about.sanitizedContent = sanitizeHTML(pageData.about.content);
-        }
-        if (pageData.about.teamDescription) {
-            pageData.about.sanitizedTeamDescription = sanitizeHTML(pageData.about.teamDescription);
+        if (pageData.about.bio) {
+            pageData.about.sanitizedBio = sanitizeHTML(pageData.about.bio);
         }
         if (pageData.contactInfo.socialMediaLinks) {
             pageData.contactInfo.socialMediaLinks.map((socialMediaLink: SocialMediaLink) => {
