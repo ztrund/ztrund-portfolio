@@ -11,11 +11,33 @@ const HomePage = ({pageData}: { pageData: PageData }) => {
         <Layout pageTitle="Home"
                 metaDesc={metaDescription.description}
                 pageData={pageData}>
-            <div className="flex flex-col xl:flex-row gap-4 mb-4 items-center">
+            <div className="flex flex-col lg:flex-row gap-4 items-center">
                 <div
                     className="w-full p-2 bg-background-lighter shadow-lg rounded-lg flex flex-col justify-center">
-                    <div className="prose max-w-none"
+                    <div className="prose text-white text-lg font-light max-w-none"
                          dangerouslySetInnerHTML={{__html: homepage.sanitizedContent}}/>
+                </div>
+                <div
+                    className="w-full lg:w-fit p-2 bg-background-lighter shadow-lg rounded-lg flex flex-col gap-4 justify-center whitespace-nowrap">
+                    <div className="text-center text-3xl font-semibold">Skills Overview</div>
+                    <div className="flex flex-col sm:flex-row lg:flex-col gap-4">
+                        <div className="w-full flex flex-col gap-2">
+                            <div className="text-2xl font-semibold">Programming Languages</div>
+                            <div className="text-lg font-light">
+                                {homepage.languages.map((language, index) => (
+                                    <div key={index}>- {language}</div>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="w-full flex flex-col gap-2">
+                            <div className="text-2xl font-semibold">Technologies and Tools</div>
+                            <div className="text-lg font-light">
+                                {homepage.technologies.map((technology, index) => (
+                                    <div key={index}>- {technology}</div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </Layout>
@@ -24,18 +46,10 @@ const HomePage = ({pageData}: { pageData: PageData }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
     const additionalQuery = `
-    "puppies": *[_type == "puppies"] {
-      _id,
-      name,
-      gender,
-      color,
-      'picture': mediaItems[type == "image"][0],
-      availability,
-    },
     "homepage": *[_type == "homepage"][0] {
       content,
-      channelUrl,
-      fallbackVideoUrl,
+      languages,
+      technologies,
     },
     "metaDescription": *[_type == "metaDescriptions"][0]{
       'description': home,

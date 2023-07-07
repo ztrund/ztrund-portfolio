@@ -96,10 +96,8 @@ export interface Puppy {
 export interface Homepage {
     content: PortableTextBlock[];
     sanitizedContent: string;
-    channelUrl: string;
-    channelId: string;
-    fallbackVideoUrl: string;
-    fallbackVideoId: string;
+    languages: string[];
+    technologies: string[];
 }
 
 export interface About {
