@@ -63,7 +63,7 @@ const Footer = ({pageData}: { pageData: PageData }) => {
                     </ul>
                 </div>
             </div>
-            <div className="flex flex-col gap-3 text-sm text-center bg-background-lighter rounded-lg shadow-lg p-2">
+            <div className="flex flex-col items-center gap-3 text-sm text-center bg-background-lighter rounded-lg shadow-lg p-2">
                 <p>&copy; {new Date().getFullYear()} {companyInfo.companyName}</p>
                 {contactInfo.email &&
                     <a className="hover:text-primary-button-lighten" href={`mailto:${contactInfo.email}`} target="_blank" rel="noopener noreferrer">

@@ -61,6 +61,7 @@ export interface ContactInfo {
     location: string;
     businessHours: BusinessHour[];
     socialMediaLinks: SocialMediaLink[];
+    resumeUrl: string;
 }
 
 export interface CompanyInfo {

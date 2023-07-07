@@ -1,6 +1,6 @@
 import {GetStaticProps} from "next";
 import fetchPageData from "../lib/fetchPageData";
-import {BusinessHour, PageData, SocialMediaLink} from "../types";
+import {PageData, SocialMediaLink} from "../types";
 import Layout from "../components/layout/layout";
 import {CustomSVGIcon} from "../components/svgIcons";
 
@@ -11,15 +11,25 @@ const ContactPage = ({pageData}: { pageData: PageData }) => {
         <Layout pageTitle="Contact Me"
                 metaDesc={metaDescription.description}
                 pageData={pageData}>
-            <div className="flex flex-col gap-10 mx-auto p-4 bg-background-lighter drop-shadow-lg rounded-lg max-w-3xl">
-                <div className="flex flex-col gap-4 text-center">
+            <div className="flex flex-col gap-10 mx-auto p-4 bg-background-lighter shadow-lg rounded-lg max-w-3xl">
+                <div className="flex flex-col gap-4 text-center items-center">
                     <h1 className="text-3xl font-semibold">Contact Me</h1>
+                    {contactInfo.resumeUrl && (
+                        <a
+                            href={contactInfo.resumeUrl}
+                            download
+                            className="w-fit p-2 flex items-center justify-center text-black text-lg font-semibold bg-primary-button hover:bg-primary-button-darken rounded-lg shadow-lg"
+                        >
+                            Download My Resume
+                        </a>
+                    )}
                     {(contactInfo.email || contactInfo.phone || contactInfo.location) && (
                         <div>
                             {contactInfo.email &&
                                 <div className="flex flex-row items-center justify-center">
                                     <strong>Email:</strong>
-                                    <a className="hover:text-primary-button-lighten p-2" href={`mailto:${contactInfo.email}`}
+                                    <a className="hover:text-primary-button-lighten p-2"
+                                       href={`mailto:${contactInfo.email}`}
                                        target="_blank" rel="noopener noreferrer">
                                         {contactInfo.email}
                                     </a>
@@ -28,7 +38,8 @@ const ContactPage = ({pageData}: { pageData: PageData }) => {
                             {contactInfo.phone &&
                                 <div className="flex flex-row items-center justify-center">
                                     <strong>Phone:</strong>
-                                    <a className="hover:text-primary-button-lighten p-2" href={`tel:${contactInfo.phone}`}>
+                                    <a className="hover:text-primary-button-lighten p-2"
+                                       href={`tel:${contactInfo.phone}`}>
                                         {contactInfo.phone}
                                     </a>
                                 </div>

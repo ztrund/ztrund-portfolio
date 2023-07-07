@@ -5,7 +5,6 @@ import {sanityImgUrl} from "./sanityImgUrl";
 import {imageDimensionExtractor} from "../helpers/imageDimensionExtractor";
 import generateCarouselUrls from "../helpers/generateCarouselUrls";
 import generateDogCardUrls from "../helpers/generateDogCardUrls";
-import {extractYoutubeChannelId, extractYoutubeVideoId} from "../helpers/youtubeLinkExtractor";
 import {replaceTemplateLiterals} from "../helpers/replaceTemplateLiterals";
 import {getAge} from "../helpers/getAge";
 import {sanitizeHTML} from "../helpers/sanitizeHTML";
@@ -33,6 +32,7 @@ const fetchPageData = async (additionalQuery: string = '', fetchParams: FetchPar
     const query = `
     {
         "contactInfo": *[_type == "contactInfo"][0] {
+        "resumeUrl": resume.asset->url,
         email,
         phone,
         location,
@@ -133,12 +133,6 @@ const fetchPageData = async (additionalQuery: string = '', fetchParams: FetchPar
         }
         if (pageData.parents.length > 0) {
             generateDogCardUrls(pageData.parents);
-        }
-        if (pageData.homepage.channelUrl) {
-            pageData.homepage.channelId = extractYoutubeChannelId(pageData.homepage.channelUrl);
-        }
-        if (pageData.homepage.fallbackVideoUrl) {
-            pageData.homepage.fallbackVideoId = extractYoutubeVideoId(pageData.homepage.fallbackVideoUrl);
         }
         if (pageData.homepage.content) {
             pageData.homepage.sanitizedContent = sanitizeHTML(pageData.homepage.content);
