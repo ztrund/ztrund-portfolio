@@ -7,7 +7,7 @@ import Link from "next/link";
 const Header = ({pageData}: { pageData: PageData }) => {
     const [isOpen, setIsOpen] = useState(false);
     const {companyInfo} = pageData;
-    const {companyName, companyLogo} = companyInfo;
+    const {companyName} = companyInfo;
 
     useEffect(() => {
         if (isOpen) {
