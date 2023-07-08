@@ -4,9 +4,6 @@ import generateFaviconUrls from "../helpers/generateFaviconUrls";
 import {sanityImgUrl} from "./sanityImgUrl";
 import {imageDimensionExtractor} from "../helpers/imageDimensionExtractor";
 import generateCarouselUrls from "../helpers/generateCarouselUrls";
-import generateDogCardUrls from "../helpers/generateDogCardUrls";
-import {replaceTemplateLiterals} from "../helpers/replaceTemplateLiterals";
-import {getAge} from "../helpers/getAge";
 import {sanitizeHTML} from "../helpers/sanitizeHTML";
 import sanityConfig from "./sanityConfig";
 import generateProjectCardUrls from "../helpers/generateProjectCardUrls";
@@ -85,34 +82,12 @@ const fetchPageData = async (additionalQuery: string = '', fetchParams: FetchPar
             companyLogo.width = imgDimensions.width / imgDimensions.height * 64;
             companyLogo.height = 64
         }
-        if (pageData.puppy.mediaItems) {
-            generateCarouselUrls(pageData.puppy.mediaItems);
-            pageData.metaDescription.description = replaceTemplateLiterals(pageData.metaDescription.description, pageData.puppy);
-            pageData.puppy.age = getAge(pageData.puppy.birthdate);
-            if (pageData.puppy.parents.length > 0) {
-                generateDogCardUrls(pageData.puppy.parents.filter(Boolean));
-            }
-        }
-        if (pageData.parent.mediaItems) {
-            generateCarouselUrls(pageData.parent.mediaItems);
-            pageData.metaDescription.description = replaceTemplateLiterals(pageData.metaDescription.description, pageData.parent);
-            pageData.parent.age = getAge(pageData.parent.birthdate);
-            if (pageData.parent.puppies.length > 0) {
-                generateDogCardUrls(pageData.parent.puppies);
-            }
-        }
         if (pageData.project.mediaItems) {
             generateCarouselUrls(pageData.project.mediaItems);
             // pageData.metaDescription.description = replaceTemplateLiterals(pageData.metaDescription.description, pageData.project);
         }
         if (pageData.projects.length > 0) {
             generateProjectCardUrls(pageData.projects);
-        }
-        if (pageData.puppies.length > 0) {
-            generateDogCardUrls(pageData.puppies);
-        }
-        if (pageData.parents.length > 0) {
-            generateDogCardUrls(pageData.parents);
         }
         if (pageData.homepage.content) {
             pageData.homepage.sanitizedContent = sanitizeHTML(pageData.homepage.content);
