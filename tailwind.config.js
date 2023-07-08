@@ -7,11 +7,6 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                'light-shades': 'hsl(75, 33%, 93%)',
-                'light-accent': 'hsl(63, 21%, 62%)',
-                'main-brand-color': 'hsl(39, 76%, 52%)',
-                'dark-accent': 'hsl(27, 48%, 48%)',
-                'dark-shades': 'hsl(5, 11%, 22%)',
                 'text': 'hsl(0, 0%, 100%)',
                 'background': 'hsl(0, 0%, 10%)',
                 'background-lighter': 'hsl(0, 0%, 20%)',

@@ -90,7 +90,7 @@ const CustomCarousel = ({mediaItems}: { mediaItems: MediaItem[] }) => {
             <div className="flex flex-row">
                 {mediaItems.map((mediaItem: MediaItem, index: number) => (<div
                     key={mediaItem._key}
-                    className={`flex ${selectedIndex === index ? 'border-4 border-main-brand-color' : 'border-4'}`}
+                    className={`flex ${selectedIndex === index ? 'border-4 border-accent' : 'border-4'}`}
                     onClick={() => {
                         scrollTo(index)
                     }}
