@@ -12,18 +12,3 @@ export const extractYoutubeVideoId = (url: string | undefined): string => {
 
     return "";
 };
-
-export const extractYoutubeChannelId = (url: string | undefined): string => {
-    if (!url) {
-        return "";
-    }
-
-    const channelRegex = /^.*(youtube.com\/channel\/|youtube.com\/c\/|youtube.com\/user\/)([^#&?]*).*/;
-    const channelMatch = url.match(channelRegex);
-
-    if (channelMatch && channelMatch[2].length > 0) {
-        return channelMatch[2];
-    }
-
-    return "";
-};

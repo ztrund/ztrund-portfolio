@@ -50,23 +50,16 @@ export interface SocialMediaLink {
     };
 }
 
-export interface BusinessHour {
-    day: string;
-    hours: string;
-}
-
 export interface ContactInfo {
     email: string;
     phone: string;
     location: string;
-    businessHours: BusinessHour[];
     socialMediaLinks: SocialMediaLink[];
     resumeUrl: string;
 }
 
 export interface CompanyInfo {
     companyName: string;
-    companyLogo: SanityImage;
     favicon: SanityImage;
     faviconUrls: {
         default: string;
@@ -76,22 +69,6 @@ export interface CompanyInfo {
         png16: string;
         appleTouch: string;
     }
-}
-
-export interface Puppy {
-    _id: string;
-    name: string;
-    birthdate: string;
-    age: string;
-    gender: string;
-    color: string;
-    weight: number;
-    description: string;
-    availability: string;
-    price: number;
-    mediaItems: MediaItem[];
-    parents: Parent[];
-    picture: MediaItem;
 }
 
 export interface Homepage {
@@ -114,20 +91,6 @@ export interface Education {
     university: string;
     startDate: string;
     endDate: string;
-}
-
-export interface Parent {
-    _id: string;
-    name: string;
-    birthdate: string;
-    age: string;
-    gender: string;
-    color: string;
-    weight: number;
-    description: string;
-    mediaItems: MediaItem[];
-    puppies: Puppy[];
-    picture: MediaItem;
 }
 
 export interface Project {
@@ -154,15 +117,6 @@ export interface Challenge {
     solutionDescription: string;
 }
 
-export interface Financing {
-    banner: SanityImage;
-    link: string;
-    logo: SanityImage;
-    text: PortableTextBlock[];
-    sanitizedText: string;
-    displayOption: string;
-}
-
 export interface MetaDescription {
     description: string;
 }
@@ -172,12 +126,7 @@ export interface PageData {
     homepage: Homepage;
     about: About;
     contactInfo: ContactInfo;
-    financing: Financing;
     metaDescription: MetaDescription;
-    puppies: Puppy[];
-    puppy: Puppy;
-    parents: Parent[];
-    parent: Parent;
     projects: Project[];
     project: Project;
 }

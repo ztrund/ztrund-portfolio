@@ -15,8 +15,8 @@ const Project = ({pageData}: { pageData: PageData }) => {
                 pageData={pageData}>
             <div className="flex flex-col gap-4">
                 <div className="flex justify-between items-center p-2 bg-background-lighter shadow-lg rounded-lg">
-                    <h1 className="text-3xl font-bold">{project.projectTitle}</h1>
-                    <h1 className="text-2xl font-normal">{project.role}</h1>
+                    <h1 className="text-3xl font-bold text-left">{project.projectTitle}</h1>
+                    <h1 className="text-2xl font-normal text-right">{project.role}</h1>
                 </div>
                 <div className="flex flex-col lg:flex-row gap-4 items-center">
                     <div
@@ -30,7 +30,7 @@ const Project = ({pageData}: { pageData: PageData }) => {
                                     {project.codeLink && (
                                         <a
                                             href={project.codeLink}
-                                            className="w-full p-2 flex items-center justify-center text-black text-lg font-semibold bg-primary-button hover:bg-primary-button-darken rounded-lg shadow-lg"
+                                            className="w-full p-2 flex items-center justify-center text-center text-black text-lg font-semibold bg-primary-button hover:bg-primary-button-darken rounded-lg shadow-lg"
                                         >
                                             View Code @ GitHub
                                         </a>
@@ -38,7 +38,7 @@ const Project = ({pageData}: { pageData: PageData }) => {
                                     {project.liveLink && (
                                         <a
                                             href={project.liveLink}
-                                            className="w-full p-2 flex items-center justify-center text-black text-lg font-semibold bg-primary-button hover:bg-primary-button-darken rounded-lg shadow-lg"
+                                            className="w-full p-2 flex items-center justify-center text-center text-black text-lg font-semibold bg-primary-button hover:bg-primary-button-darken rounded-lg shadow-lg"
                                         >
                                             View Live Project
                                         </a>

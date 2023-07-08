@@ -1,24 +1,18 @@
 import {FetchParams, PageData, SocialMediaLink} from '../types';
 import axios from "axios";
 import generateFaviconUrls from "../helpers/generateFaviconUrls";
-import {sanityImgUrl} from "./sanityImgUrl";
-import {imageDimensionExtractor} from "../helpers/imageDimensionExtractor";
 import generateCarouselUrls from "../helpers/generateCarouselUrls";
 import {sanitizeHTML} from "../helpers/sanitizeHTML";
 import sanityConfig from "./sanityConfig";
 import generateProjectCardUrls from "../helpers/generateProjectCardUrls";
+import {replaceTemplateLiterals} from "../helpers/replaceTemplateLiterals";
 
 const deserializeToPageData = (rawData: PageData): PageData => {
     return {
         contactInfo: rawData.contactInfo || {},
         companyInfo: rawData.companyInfo || {},
-        puppies: rawData.puppies || {},
         homepage: rawData.homepage || {},
         about: rawData.about || {},
-        parents: rawData.parents || {},
-        parent: rawData.parent || {},
-        puppy: rawData.puppy || {},
-        financing: rawData.financing || {},
         metaDescription: rawData.metaDescription || {},
         projects: rawData.projects || {},
         project: rawData.project || {},
@@ -65,26 +59,9 @@ const fetchPageData = async (additionalQuery: string = '', fetchParams: FetchPar
         if (pageData.companyInfo.favicon) {
             pageData.companyInfo.faviconUrls = generateFaviconUrls(pageData.companyInfo.favicon);
         }
-        if (pageData.companyInfo.companyLogo) {
-            const imageUrlParams = {
-                h: 64,
-                auto: 'format',
-                q: 75,
-                fit: 'min'
-            };
-            const companyLogo = pageData.companyInfo.companyLogo;
-            companyLogo.imageUrl = sanityImgUrl(companyLogo, {...imageUrlParams, dpr: 1});
-            companyLogo.srcSet = [1, 1.5, 2].map(dpr => `${sanityImgUrl(companyLogo, {
-                ...imageUrlParams,
-                dpr
-            })} ${dpr}x`).join(', ');
-            const imgDimensions = imageDimensionExtractor(companyLogo.asset._ref);
-            companyLogo.width = imgDimensions.width / imgDimensions.height * 64;
-            companyLogo.height = 64
-        }
         if (pageData.project.mediaItems) {
             generateCarouselUrls(pageData.project.mediaItems);
-            // pageData.metaDescription.description = replaceTemplateLiterals(pageData.metaDescription.description, pageData.project);
+            pageData.metaDescription.description = replaceTemplateLiterals(pageData.metaDescription.description, pageData.project);
         }
         if (pageData.projects.length > 0) {
             generateProjectCardUrls(pageData.projects);
