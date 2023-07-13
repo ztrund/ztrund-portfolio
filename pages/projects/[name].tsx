@@ -31,6 +31,8 @@ const Project = ({pageData}: { pageData: PageData }) => {
                                         {project.codeLink && (
                                             <a
                                                 href={project.codeLink}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
                                                 className="w-full p-2 flex items-center justify-center text-center text-black text-lg font-semibold bg-primary-button hover:bg-primary-button-darken rounded-lg shadow-lg"
                                             >
                                                 View Code @ GitHub
@@ -39,6 +41,8 @@ const Project = ({pageData}: { pageData: PageData }) => {
                                         {project.liveLink && (
                                             <a
                                                 href={project.liveLink}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
                                                 className="w-full p-2 flex items-center justify-center text-center text-black text-lg font-semibold bg-primary-button hover:bg-primary-button-darken rounded-lg shadow-lg"
                                             >
                                                 View Live Project
@@ -51,6 +55,8 @@ const Project = ({pageData}: { pageData: PageData }) => {
                                                 <a
                                                     key={index}
                                                     href={link.linkUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
                                                     className="w-full p-2 flex items-center justify-center text-center text-black text-lg font-semibold bg-primary-button hover:bg-primary-button-darken rounded-lg shadow-lg"
                                                 >
                                                     {link.linkTitle}
