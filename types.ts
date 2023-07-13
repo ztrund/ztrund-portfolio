@@ -97,15 +97,22 @@ export interface Project {
     _id: string;
     slug: Slug;
     projectTitle: string;
-    description: string;
+    description: PortableTextBlock[];
+    sanitizedDescription: string;
     role: string;
     languages: string[];
     technologies: string[];
     codeLink: string;
     liveLink: string;
+    otherLinks: OtherLink[];
     mediaItems: MediaItem[];
     picture: MediaItem;
     challenges: Challenge[];
+}
+
+export interface OtherLink {
+    linkTitle: string;
+    linkUrl: string;
 }
 
 export interface Slug {

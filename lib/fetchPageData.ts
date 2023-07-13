@@ -61,6 +61,7 @@ const fetchPageData = async (additionalQuery: string = '', fetchParams: FetchPar
         }
         if (pageData.project.mediaItems) {
             generateCarouselUrls(pageData.project.mediaItems);
+            pageData.project.sanitizedDescription = sanitizeHTML(pageData.project.description);
             pageData.metaDescription.description = replaceTemplateLiterals(pageData.metaDescription.description, pageData.project);
         }
         if (pageData.projects.length > 0) {

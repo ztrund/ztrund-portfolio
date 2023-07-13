@@ -26,30 +26,47 @@ const Project = ({pageData}: { pageData: PageData }) => {
                     <div className="w-full lg:w-1/2 flex flex-col gap-4">
                         <div className="h-min flex flex-col gap-4">
                             {(project.codeLink || project.liveLink) && (
-                                <div className="flex flex-row gap-4">
-                                    {project.codeLink && (
-                                        <a
-                                            href={project.codeLink}
-                                            className="w-full p-2 flex items-center justify-center text-center text-black text-lg font-semibold bg-primary-button hover:bg-primary-button-darken rounded-lg shadow-lg"
-                                        >
-                                            View Code @ GitHub
-                                        </a>
+                                <>
+                                    <div className="flex flex-row gap-4">
+                                        {project.codeLink && (
+                                            <a
+                                                href={project.codeLink}
+                                                className="w-full p-2 flex items-center justify-center text-center text-black text-lg font-semibold bg-primary-button hover:bg-primary-button-darken rounded-lg shadow-lg"
+                                            >
+                                                View Code @ GitHub
+                                            </a>
+                                        )}
+                                        {project.liveLink && (
+                                            <a
+                                                href={project.liveLink}
+                                                className="w-full p-2 flex items-center justify-center text-center text-black text-lg font-semibold bg-primary-button hover:bg-primary-button-darken rounded-lg shadow-lg"
+                                            >
+                                                View Live Project
+                                            </a>
+                                        )}
+                                    </div>
+                                    {project.otherLinks && (
+                                        <div className="flex flex-row gap-4">
+                                            {project.otherLinks.map((link, index) => (
+                                                <a
+                                                    key={index}
+                                                    href={link.linkUrl}
+                                                    className="w-full p-2 flex items-center justify-center text-center text-black text-lg font-semibold bg-primary-button hover:bg-primary-button-darken rounded-lg shadow-lg"
+                                                >
+                                                    {link.linkTitle}
+                                                </a>
+                                            ))}
+                                        </div>
                                     )}
-                                    {project.liveLink && (
-                                        <a
-                                            href={project.liveLink}
-                                            className="w-full p-2 flex items-center justify-center text-center text-black text-lg font-semibold bg-primary-button hover:bg-primary-button-darken rounded-lg shadow-lg"
-                                        >
-                                            View Live Project
-                                        </a>
-                                    )}
-                                </div>
+                                </>
                             )}
                             <div className="bg-background-lighter shadow-lg rounded-lg p-2">
-                                <p className="text-lg font-light">{project.description}</p>
+                                <div className="prose text-white text-lg font-light max-w-none"
+                                     dangerouslySetInnerHTML={{__html: project.sanitizedDescription}}/>
                             </div>
                             <div className="flex flex-row gap-4">
-                                <div className="bg-background-lighter shadow-lg rounded-lg p-2 w-full flex flex-col gap-2">
+                                <div
+                                    className="bg-background-lighter shadow-lg rounded-lg p-2 w-full flex flex-col gap-2">
                                     <div className="text-2xl font-semibold text-center">Languages</div>
                                     <div className="text-lg font-light">
                                         {project.languages.map((language, index) => (
@@ -57,7 +74,8 @@ const Project = ({pageData}: { pageData: PageData }) => {
                                         ))}
                                     </div>
                                 </div>
-                                <div className="bg-background-lighter shadow-lg rounded-lg p-2 w-full flex flex-col gap-2">
+                                <div
+                                    className="bg-background-lighter shadow-lg rounded-lg p-2 w-full flex flex-col gap-2">
                                     <div className="text-2xl font-semibold text-center">Technologies</div>
                                     <div className="text-lg font-light">
                                         {project.technologies.map((technology, index) => (
@@ -89,6 +107,7 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
       technologies,
       codeLink,
       liveLink,
+      otherLinks,
       mediaItems,
       challenges,
     },
