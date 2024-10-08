@@ -18,7 +18,9 @@ const About = ({pageData}: { pageData: PageData }) => {
                         <div key={index} className="text-white text-lg font-light">
                             <p className="font-semibold">{edu.university}</p>
                             <p>{edu.degree}</p>
-                            <p>{format(new Date(edu.startDate), 'MMMM yyyy')} - {format(new Date(edu.endDate), 'MMMM yyyy')}</p>
+                            {edu.startDate && edu.endDate && (
+                                <p>{format(new Date(edu.startDate), 'MMMM yyyy')} - {format(new Date(edu.endDate), 'MMMM yyyy')}</p>
+                            )}
                         </div>
                     ))}
                 </div>
